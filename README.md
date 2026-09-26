@@ -1,2 +1,2 @@
-# barbearia_vitrine
- barbearia com html css e javascript 
+# PrimeTech
+Loja de produtos de tecnologia com HTML, CSS e JavaScript.

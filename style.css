@@ -1,27 +1,27 @@
 :root {
-    /* Colors */
-    --bg-body: #010409;
-    --bg-surface: #0d1117;
-    --bg-card: #161b22;
+    /* PrimeTech Cyber Premium */
+    --bg-body: #030305;
+    --bg-surface: rgba(15, 15, 20, 0.7);
+    --bg-card: rgba(25, 25, 35, 0.5);
 
-    --primary: #38bdf8;
-    --primary-hover: #0ea5e9;
-    --accent: #818cf8;
+    --primary: #00f2fe;
+    --primary-hover: #4facfe;
+    --accent: #f093fb;
+    
+    --text-main: #fdfdfd;
+    --text-muted: #9ba1a6;
 
-    --text-main: #f0f6fc;
-    --text-muted: #8b949e;
-
-    --border: #30363d;
-    --success: #238636;
+    --border: rgba(255, 255, 255, 0.08);
+    --success: #2ecc71;
 
     /* Spacing */
-    --container-width: 1200px;
-    --header-height: 70px;
+    --container-width: 1280px;
+    --header-height: 75px;
 
     /* Effects */
-    --glow: 0 0 20px rgba(56, 189, 248, 0.15);
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    --transition: all 0.3s ease;
+    --glow: 0 0 25px rgba(0, 242, 254, 0.5), 0 0 45px rgba(240, 147, 251, 0.2);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -32,9 +32,11 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-body);
+    background: var(--bg-body);
+    background-image: radial-gradient(circle at 50% -20%, #170d2c 0%, var(--bg-body) 60%);
     color: var(--text-main);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 img {
@@ -78,13 +80,16 @@ button {
 }
 
 .btn-primary {
-    background-color: var(--primary);
-    color: #000;
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-hover);
+    transform: translateY(-2px);
     box-shadow: var(--glow);
+    filter: brightness(1.1);
 }
 
 .btn-block {
@@ -100,14 +105,16 @@ button {
 /* Header */
 .header {
     height: var(--header-height);
-    background-color: rgba(1, 4, 9, 0.8);
-    backdrop-filter: blur(12px);
+    background: rgba(3, 3, 5, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 100;
     border-bottom: 1px solid var(--border);
+    transition: var(--transition);
 }
 
 .header-container {
@@ -129,11 +136,12 @@ button {
 
 .search-bar {
     display: flex;
-    background: var(--bg-surface);
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    padding: 0.5rem 1.2rem;
     width: 40%;
+    transition: var(--transition);
 }
 
 .search-bar input {
@@ -275,12 +283,13 @@ button {
 .card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 16px;
     overflow: hidden;
     transition: var(--transition);
     position: relative;
     display: flex;
     flex-direction: column;
+    backdrop-filter: blur(10px);
 }
 
 .card:hover {
@@ -435,16 +444,19 @@ button {
 .cart-sidebar {
     position: fixed;
     top: 0;
-    right: -400px;
+    right: -450px;
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     height: 100%;
-    background: var(--bg-card);
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     z-index: 102;
     transition: var(--transition);
     display: flex;
     flex-direction: column;
-    border-left: 1px solid var(--border);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
 }
 
 .cart-sidebar.open {
@@ -532,13 +544,15 @@ button {
 }
 
 .modal-content {
-    background: var(--bg-card);
+    background: rgba(15, 15, 22, 0.85);
+    backdrop-filter: blur(25px);
     width: 90%;
-    max-width: 800px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
+    max-width: 850px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
-    padding: 2rem;
+    padding: 2.5rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
 }
 
 .modal-close {
@@ -571,10 +585,11 @@ button {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: var(--success);
+    background: linear-gradient(45deg, var(--primary), var(--accent));
     color: #fff;
-    padding: 1rem 2rem;
-    border-radius: 6px;
+    font-weight: 700;
+    padding: 1.2rem 2.5rem;
+    border-radius: 12px;
     box-shadow: var(--shadow);
     transform: translateY(100px);
     transition: transform 0.3s ease;
